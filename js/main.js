@@ -81,9 +81,9 @@ startButton.addEventListener('click', function(){
         newSquareNumber.innerHTML = i;
         cells.push(i);
 
-        newSquare.addEventListener('click', function(){
-            let points = 0;
-            while(points < difficultNumber - bombs.length){
+        
+        for(let points = 0; points < difficultNumber - bombs.length; points++){
+                newSquare.addEventListener('click', function(){
                 
                 if(bombs.includes(i)){
                     newSquare.classList.toggle('bomb');
@@ -91,12 +91,13 @@ startButton.addEventListener('click', function(){
                 }else{
                     newSquare.classList.toggle('clicked');
                     console.log(i);
-                    points++;
                     pointsDom.innerHTML = `Hai ${points} punti`;
                 }
-            }
+
+                
+            });
             
-        });
+        }
 
 
     }
