@@ -39,18 +39,19 @@ const startButton = document.getElementById('button');
 const difficulty = document.getElementById('difficulty');
 const difficultNumber = parseInt(difficulty.value);
 console.log(typeof(difficultNumber));
-let bombs = [];
 
 startButton.addEventListener('click', function(){
+    let bombs = [];
     
     playField.innerHTML = '';
-    let i = 1
-    for(; i <= difficultNumber; i++){
+    
+    for(let i = 1; i <= difficultNumber; i++){
         squareGenerator(i);
     }
 
-    let number = bombsNumbersGen(difficultNumber);
-    console.log(number);
+    bombsNumbersGen(bombs, difficultNumber);
+    console.log(bombs);
+    
 });
 
 
@@ -90,9 +91,12 @@ function squareGenerator(numberInside){
 }
 
 
-function bombsNumbersGen(randomNumberRange){
-    let randomNumber = (Math.floor(Math.random() * randomNumberRange + 1));
-    return randomNumber;
+function bombsNumbersGen(arrayToFill, randomNumberRange){
+    for(c = 0; c < 16; c++){
+        let randomNumber = (Math.floor(Math.random() * randomNumberRange + 1));
+        arrayToFill.push(randomNumber);
+    }
+    return arrayToFill;
 
 }
 
