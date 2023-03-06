@@ -48,16 +48,21 @@ console.log(typeof(difficultNumber));
 
 startButton.addEventListener('click', function(){
     let bombs = [];
-    uniqueNumberGen(bombs, 1, difficultNumber)
+
+
+    for(c = 0;c < 16;c++){
+        let bomb = uniqueNumberGen(bombs, 1, difficultNumber);
+        bombs.push(bomb);
+    }
+
+    console.log(bombs)
+
     playField.innerHTML = '';
     
     for(let i = 1; i <= difficultNumber; i++){
         squareGenerator(i);
     }
 
-    randomNumbersGen(bombs, difficultNumber);
-    console.log(bombs);
-    
 });
 
 
@@ -116,6 +121,7 @@ function uniqueNumberGen(blacklist, min, max){
             validNumber = true;
            }
         }
+    return randomNumber;
 }
 
 
