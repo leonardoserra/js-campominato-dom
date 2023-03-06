@@ -82,22 +82,29 @@ startButton.addEventListener('click', function(){
         cells.push(i);
 
         
-        for(let points = 0; points < difficultNumber - bombs.length; points++){
-                newSquare.addEventListener('click', function(){
+        // for(let points = 0; points < difficultNumber - bombs.length; points++){
+        let points = 0; 
+        life = false;
+        do{newSquare.addEventListener('click', function(){
                     this.classList.add('clicked');
-                    pointsDom.innerHTML = `Hai ${points} punti`;
-                
+                    
+                    
                     if(bombs.includes(i)){
                         this.classList.add('bomb');
                         pointsDom.innerHTML = `Hai perso! Hai totalizzato ${points} punti`
-                    }else{
-                        console.log(i);
+                    }else if(!bombs.includes(i)){
+                        life = true;
+                        points++;
+                        pointsDom.innerHTML = `Hai ${points} punti`;
                     }
-
+                    
+                    
                 
             });
+        }while(!life)
+
             
-        }
+        // }
 
 
     }
