@@ -37,17 +37,19 @@
 const playField = document.getElementById('playField');
 const startButton = document.getElementById('button');
 const difficulty = document.getElementById('difficulty');
+const difficultNumber = parseInt(difficulty.value);
+console.log(typeof(difficultNumber));
+let bombs = [];
 
 startButton.addEventListener('click', function(){
     
-    let bombs = [];
     playField.innerHTML = '';
-
-    for(let i = 1; i <= difficulty.value; i++){
+    let i = 1
+    for(; i <= difficultNumber; i++){
         squareGenerator(i);
     }
 
-    bombsNumbersGen(bombs, 100);
+    bombs.push(bombsNumbersGen(i));
     console.log(bombs);
 });
 
@@ -67,10 +69,10 @@ function squareGenerator(numberInside){
     newSquare.classList.add('square','easy');
     newSquareNumber.classList.add('square-number');
 
-    if(difficulty.value == 81){
+    if(difficultNumber == 81){
         newSquare.classList.remove('easy');
         newSquare.classList.add('medium');
-    }else if(difficulty.value == 49){
+    }else if(difficultNumber == 49){
         newSquare.classList.remove('easy');
         newSquare.classList.add('hard');
     }
@@ -88,12 +90,12 @@ function squareGenerator(numberInside){
 }
 
 
-function bombsNumbersGen(arrayToFill, randomNumberRange){
+function bombsNumbersGen(randomNumberRange){
     let randomNumber;
     for(c = 0; c < 16; c++){
         randomNumber = (Math.floor(Math.random) * randomNumberRange + 1);
-        arrayToFill.push(randomNumber);
     }
+    return randomNumber;
 
 }
 
