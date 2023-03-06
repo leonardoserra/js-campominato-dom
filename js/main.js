@@ -37,15 +37,18 @@
 const playField = document.getElementById('playField');
 const startButton = document.getElementById('button');
 const difficulty = document.getElementById('difficulty');
-const bombs = [];
 
 startButton.addEventListener('click', function(){
-
+    
+    let bombs = [];
     playField.innerHTML = '';
 
     for(let i = 1; i <= difficulty.value; i++){
         squareGenerator(i);
     }
+
+    bombs = bombsNumbersGen(bombs, 81);
+    console.log(bombs);
 });
 
 
@@ -86,13 +89,14 @@ function squareGenerator(numberInside){
 
 
 function bombsNumbersGen(arrayToFill, randomNumberRange){
+
     for(c = 0; c < 16; c++){
-    arrayToFill.push(Math.floor(Math.random) * randomNumberRange + 1);
+        arrayToFill.push(Math.floor(Math.random) * randomNumberRange + 1);
     }
+    return arrayToFill;
 
 }
 
-console.log(bombs);
 
 
 
