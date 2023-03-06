@@ -49,8 +49,8 @@ startButton.addEventListener('click', function(){
         squareGenerator(i);
     }
 
-    bombs.push(bombsNumbersGen(i));
-    console.log(bombs);
+    let number = bombsNumbersGen(difficultNumber);
+    console.log(number);
 });
 
 
@@ -91,10 +91,7 @@ function squareGenerator(numberInside){
 
 
 function bombsNumbersGen(randomNumberRange){
-    let randomNumber;
-    for(c = 0; c < 16; c++){
-        randomNumber = (Math.floor(Math.random) * randomNumberRange + 1);
-    }
+    let randomNumber = (Math.floor(Math.random() * randomNumberRange + 1));
     return randomNumber;
 
 }
