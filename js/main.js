@@ -100,6 +100,7 @@ startButton.addEventListener('click', function(){
                 pointsDom.innerHTML = `Hai perso! Hai totalizzato ${points} punti`;
                 overlay.classList.add('overlay');
                 playField.append(overlay);
+                clicked = [];
             }else{
                 if(!clicked.includes(i)){
                     points++;
@@ -113,6 +114,7 @@ startButton.addEventListener('click', function(){
                 pointsDom.innerHTML = `Hai fatto il massimo di punti, HAI VINTO!`;
                 overlay.classList.add('overlay');
                 playField.append(overlay);
+                clicked = [];
             }
         });
 
