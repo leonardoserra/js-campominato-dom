@@ -38,7 +38,7 @@ const playField = document.getElementById('playField');
 const startButton = document.getElementById('button');
 const difficulty = document.getElementById('difficulty');
 let difficultNumber = parseInt(difficulty.value);
-
+let points= 0;
 /*
 per vedere se é una bomba dovro fare un ciclo for con un if che confronterà
 ogni volta gli indici dell'array creato da numberInside con gli indici
@@ -82,22 +82,19 @@ startButton.addEventListener('click', function(){
         newSquareNumber.innerHTML = i;
 
         cells.push(i);
-
-        newSquare.addEventListener('click', function(){
-            let points= 0;
-            for(let counter = 0; counter < cells.length - bombs.length; counter++){
-
-                this.classList.add('clicked');
-                if(bombs.includes(i)){
-                    this.classList.add('bomb');
-                    pointsDom.innerHTML = `Hai perso! Hai totalizzato ${points} punti`
-                }else{
-                    points++;
-                    pointsDom.innerHTML = `Punti: ${points}`;
-                }
-            }
-            
         
+        
+        newSquare.addEventListener('click', function(){
+
+            this.classList.add('clicked');
+            console.log(i);
+            if(bombs.includes(i)){
+                this.classList.add('bomb');
+                pointsDom.innerHTML = `Hai perso! Hai totalizzato ${points} punti`;
+            }else{
+                points++;
+                pointsDom.innerHTML = `Punti: ${points}`;
+            }     
             
         });
 
