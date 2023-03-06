@@ -40,6 +40,11 @@ const difficulty = document.getElementById('difficulty');
 const difficultNumber = parseInt(difficulty.value);
 console.log(typeof(difficultNumber));
 
+/*
+    per vedere se é una bomba dovro fare un if che confronterà ogni volta
+    gli indici dell'array creato da numberInside con gli indici
+    dell array bombs e se corrispondono allora quella sara una bomba
+*/
 startButton.addEventListener('click', function(){
     let bombs = [];
     
