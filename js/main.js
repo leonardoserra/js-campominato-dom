@@ -40,8 +40,8 @@ const difficulty = document.getElementById('difficulty');
 const difficultNumber = parseInt(difficulty.value);
 
 /*
-    per vedere se é una bomba dovro fare un ciclo for con un if che confronterà
-    ogni volta gli indici dell'array creato da numberInside con gli indici
+per vedere se é una bomba dovro fare un ciclo for con un if che confronterà
+ogni volta gli indici dell'array creato da numberInside con gli indici
     dell array bombs e se corrispondono allora quella sara una bomba
 */
 
@@ -50,11 +50,17 @@ startButton.addEventListener('click', function(){
     let bombs = [];
     let cells = [];
     
+    //creo array coi numeri bomba
+    for(c = 0;c < 16;c++){
+        let bomb = uniqueNumberGen(bombs, 1, difficultNumber);
+        bombs.push(bomb);
+    }
+    
     //riempio il field coi quadrati cliccabili
     for(let i = 1; i <= difficultNumber; i++){
         const newSquare = document.createElement('div');
         const newSquareNumber = document.createElement('div');
-    
+        
         playField.append(newSquare);
         newSquare.append(newSquareNumber);
         
@@ -75,16 +81,22 @@ startButton.addEventListener('click', function(){
         newSquare.addEventListener('click', function(){
             this.classList.toggle('clicked');
             console.log(i);
-            bombDropper(cells, bombs, newSquare);
         });
 
+        // bombDropper(cells, bombs, newSquare);
+
+        newSquare.addEventListener('click', function(){
+            for(c = 0; c < cells.lenght - 1; c++){
+            
+                if(bombs.includes(i)){
+                   return this.classList.toggle('bomb');
+                }
+            }   
+        })
+
     }
 
-    //creo array coi numeri bomba
-    for(c = 0;c < 16;c++){
-        let bomb = uniqueNumberGen(bombs, 1, difficultNumber);
-        bombs.push(bomb);
-    }
+
     console.log(bombs);
     console.log(cells);
 
@@ -147,13 +159,15 @@ function uniqueNumberGen(blacklist, min, max){
 }
 
 function bombDropper(fieldArray, bombArray, element){
+    // element.addEventListener('click', function(){
+    //     for(i = 0; i < fieldArray.lenght - 1; i++){
+        
+    //         if(bombArray.includes(i)){
+    //            return this.classList.toggle('bomb');
+    //         }
+    //     }   
+    // })
     
-    for(i = 0; i < fieldArray.lenght - 1; i++){
-        if(bombArray.includes(i)){
-            
-            element.classList.toggle('bomb');
-        }
-    }
 }
 
     
