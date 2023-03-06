@@ -52,7 +52,32 @@ startButton.addEventListener('click', function(){
     
     //riempio il field coi quadrati cliccabili
     for(let i = 1; i <= difficultNumber; i++){
-        cells.push(squareGenerator(i));
+        const newSquare = document.createElement('div');
+        const newSquareNumber = document.createElement('div');
+    
+        playField.append(newSquare);
+        newSquare.append(newSquareNumber);
+        
+        newSquare.classList.add('square','easy');
+        newSquareNumber.classList.add('square-number');
+
+        if(difficultNumber == 81){
+            newSquare.classList.remove('easy');
+            newSquare.classList.add('medium');
+        }else if(difficultNumber == 49){
+            newSquare.classList.remove('easy');
+            newSquare.classList.add('hard');
+        }
+
+        newSquareNumber.innerHTML = i;
+        cells.push(i);
+
+        newSquare.addEventListener('click', function(){
+            this.classList.toggle('clicked');
+            console.log(i);
+            bombDropper(cells, bombs, newSquare);
+        });
+
     }
 
     //creo array coi numeri bomba
@@ -60,11 +85,10 @@ startButton.addEventListener('click', function(){
         let bomb = uniqueNumberGen(bombs, 1, difficultNumber);
         bombs.push(bomb);
     }
+    console.log(bombs);
+    console.log(cells);
 
-
-
-    console.log(bombs)
-
+    
     
 
 });
@@ -76,38 +100,35 @@ startButton.addEventListener('click', function(){
 
 function squareGenerator(numberInside){
     
-    const newSquare = document.createElement('div');
-    const newSquareNumber = document.createElement('div');
+    // const newSquare = document.createElement('div');
+    // const newSquareNumber = document.createElement('div');
     
-    playField.append(newSquare);
-    newSquare.append(newSquareNumber);
+    // playField.append(newSquare);
+    // newSquare.append(newSquareNumber);
     
-    newSquare.classList.add('square','easy');
-    newSquareNumber.classList.add('square-number');
+    // newSquare.classList.add('square','easy');
+    // newSquareNumber.classList.add('square-number');
 
-    if(difficultNumber == 81){
-        newSquare.classList.remove('easy');
-        newSquare.classList.add('medium');
-    }else if(difficultNumber == 49){
-        newSquare.classList.remove('easy');
-        newSquare.classList.add('hard');
-    }
+    // if(difficultNumber == 81){
+    //     newSquare.classList.remove('easy');
+    //     newSquare.classList.add('medium');
+    // }else if(difficultNumber == 49){
+    //     newSquare.classList.remove('easy');
+    //     newSquare.classList.add('hard');
+    // }
 
-    newSquareNumber.innerHTML = numberInside;
+    // newSquareNumber.innerHTML = numberInside;
 
-    newSquare.addEventListener('click', function(){
-        this.classList.toggle('clicked');
-        console.log(numberInside);
-    })
+    // newSquare.addEventListener('click', function(){
+    //     this.classList.toggle('clicked');
+    //     console.log(numberInside);
+    // })
 
 }
 
 
 function randomNumbersGen(min, max){
-    // for(c = 0; c < 16; c++){
         let randomNumber = Math.floor(Math.random() * (max - min) + 1) + min;
-        // arrayToFill.push(randomNumber);
-    // }
     return randomNumber;
 
 }
@@ -125,12 +146,11 @@ function uniqueNumberGen(blacklist, min, max){
     return randomNumber;
 }
 
-function bombDropper(fieldArray, bombArray){
+function bombDropper(fieldArray, bombArray, element){
     
-    for(i = 0;i < fieldArray.lenght - 1;i++){
+    for(i = 0; i < fieldArray.lenght - 1; i++){
         if(bombArray.includes(i)){
-        //newSquare.classList.add('bomb');
-        
+            element.classList.toggle('bomb');
         }
     }
 }
