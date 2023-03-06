@@ -62,6 +62,7 @@ startButton.addEventListener('click', function(){
     }
     
     //riempio il field coi quadrati cliccabili
+    
     for(let i = 1; i <= difficultNumber; i++){
         const newSquare = document.createElement('div');
         const newSquareNumber = document.createElement('div');
