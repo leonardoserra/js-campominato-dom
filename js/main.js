@@ -37,7 +37,7 @@
 const playField = document.getElementById('playField');
 const startButton = document.getElementById('button');
 const difficulty = document.getElementById('difficulty');
-const difficultNumber = parseInt(difficulty.value);
+let difficultNumber = parseInt(difficulty.value);
 
 /*
 per vedere se é una bomba dovro fare un ciclo for con un if che confronterà
@@ -70,10 +70,10 @@ startButton.addEventListener('click', function(){
         newSquare.classList.add('square','easy');
         newSquareNumber.classList.add('square-number');
 
-        if(difficultNumber == 81){
+        if(difficultNumber === 81){
             newSquare.classList.remove('easy');
             newSquare.classList.add('medium');
-        }else if(difficultNumber == 49){
+        }else if(difficultNumber === 49){
             newSquare.classList.remove('easy');
             newSquare.classList.add('hard');
         }
@@ -81,10 +81,8 @@ startButton.addEventListener('click', function(){
         newSquareNumber.innerHTML = i;
         cells.push(i);
 
-        
-        
         newSquare.addEventListener('click', function(){
-            
+                
             let points = 0;
             this.classList.add('clicked');
             
@@ -100,10 +98,6 @@ startButton.addEventListener('click', function(){
             
             }
         });
-        
-
-            
-        
 
 
     }
