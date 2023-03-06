@@ -60,6 +60,9 @@ startButton.addEventListener('click', function(){
     for(let i = 1; i <= difficultNumber; i++){
         const newSquare = document.createElement('div');
         const newSquareNumber = document.createElement('div');
+        const pointsDom = document.getElementById('points');
+        pointsDom.innerHTML = `Hai 0 punti`
+
         
         playField.append(newSquare);
         newSquare.append(newSquareNumber);
@@ -79,24 +82,22 @@ startButton.addEventListener('click', function(){
         cells.push(i);
 
         newSquare.addEventListener('click', function(){
-            this.classList.toggle('clicked');
-            console.log(i);
-            if(bombs.includes(i)){
-                this.classList.toggle('bomb');
+            let points = 0;
+            while(points < difficultNumber - bombs.length){
+                
+                if(bombs.includes(i)){
+                    newSquare.classList.toggle('bomb');
+                    pointsDom.innerHTML = `Hai perso! Hai totalizzato ${points} punti`
+                }else{
+                    newSquare.classList.toggle('clicked');
+                    console.log(i);
+                    points++;
+                    pointsDom.innerHTML = `Hai ${points} punti`;
+                }
             }
             
         });
 
-        // bombDropper(cells, bombs, newSquare);
-
-        // newSquare.addEventListener('click', function(){
-        //     for(c = 0; c < cells.lenght - 1; c++){
-            
-        //         if(bombs.includes(i)){
-        //            return this.classList.toggle('bomb');
-        //         }
-        //     }   
-        // })
 
     }
 
@@ -109,38 +110,6 @@ startButton.addEventListener('click', function(){
 
 });
 
-
-
-
-
-
-function squareGenerator(numberInside){
-    
-    // const newSquare = document.createElement('div');
-    // const newSquareNumber = document.createElement('div');
-    
-    // playField.append(newSquare);
-    // newSquare.append(newSquareNumber);
-    
-    // newSquare.classList.add('square','easy');
-    // newSquareNumber.classList.add('square-number');
-
-    // if(difficultNumber == 81){
-    //     newSquare.classList.remove('easy');
-    //     newSquare.classList.add('medium');
-    // }else if(difficultNumber == 49){
-    //     newSquare.classList.remove('easy');
-    //     newSquare.classList.add('hard');
-    // }
-
-    // newSquareNumber.innerHTML = numberInside;
-
-    // newSquare.addEventListener('click', function(){
-    //     this.classList.toggle('clicked');
-    //     console.log(numberInside);
-    // })
-
-}
 
 
 function randomNumbersGen(min, max){
@@ -162,17 +131,6 @@ function uniqueNumberGen(blacklist, min, max){
     return randomNumber;
 }
 
-function bombDropper(fieldArray, bombArray, element){
-    // element.addEventListener('click', function(){
-    //     for(i = 0; i < fieldArray.lenght - 1; i++){
-        
-    //         if(bombArray.includes(i)){
-    //            return this.classList.toggle('bomb');
-    //         }
-    //     }   
-    // })
-    
-}
 
     
 
