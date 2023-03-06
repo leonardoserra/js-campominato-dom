@@ -37,9 +37,11 @@
 const playField = document.getElementById('playField');
 const startButton = document.getElementById('button');
 const difficulty = document.getElementById('difficulty');
-let difficultNumber = parseInt(difficulty.value);
+
 let points= 0;
-let clicked = [];/*
+let clicked = [];
+
+/*
 per vedere se é una bomba dovro fare un ciclo for con un if che confronterà
 ogni volta gli indici dell'array creato da numberInside con gli indici
     dell array bombs e se corrispondono allora quella sara una bomba
@@ -50,6 +52,7 @@ startButton.addEventListener('click', function(){
     playField.innerHTML = '';
     let bombs = [];
     let cells = [];
+    let difficultNumber = parseInt(difficulty.value);
     
     //creo array coi numeri bomba
     for(c = 0;c < 16;c++){
