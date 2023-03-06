@@ -61,7 +61,8 @@ startButton.addEventListener('click', function(){
         const newSquare = document.createElement('div');
         const newSquareNumber = document.createElement('div');
         const pointsDom = document.getElementById('points');
-        pointsDom.innerHTML = `Hai 0 punti`
+
+        pointsDom.innerHTML = `Punti: 0`
 
         
         playField.append(newSquare);
@@ -79,32 +80,33 @@ startButton.addEventListener('click', function(){
         }
 
         newSquareNumber.innerHTML = i;
+
         cells.push(i);
 
         newSquare.addEventListener('click', function(){
-                
-            let points = 0;
-            this.classList.add('clicked');
-            
-            
-            while(points < (cells.length - bombs.length)){
-                points++;
+            let points= 0;
+            for(let counter = 0; counter < cells.length - bombs.length; counter++){
+
+                this.classList.add('clicked');
                 if(bombs.includes(i)){
                     this.classList.add('bomb');
-                    pointsDom.innerHTML = `Hai perso! Hai totalizzato ${points - 1} punti`
+                    pointsDom.innerHTML = `Hai perso! Hai totalizzato ${points} punti`
                 }else{
-                    pointsDom.innerHTML = `Hai ${points} punti`;
+                    points++;
+                    pointsDom.innerHTML = `Punti: ${points}`;
                 }
-            
             }
+            
+        
+            
         });
 
 
     }
-
-
+    
     console.log(bombs);
     console.log(cells);
+
 
     
     
