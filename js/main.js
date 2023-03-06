@@ -150,6 +150,7 @@ function bombDropper(fieldArray, bombArray, element){
     
     for(i = 0; i < fieldArray.lenght - 1; i++){
         if(bombArray.includes(i)){
+            
             element.classList.toggle('bomb');
         }
     }
