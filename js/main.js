@@ -91,6 +91,11 @@ startButton.addEventListener('click', function(){
             if(bombs.includes(i)){
                 this.classList.add('bomb');
                 pointsDom.innerHTML = `Hai perso! Hai totalizzato ${points} punti`;
+                let overlay = document.createElement('div');
+                overlay.classList.add('overlay');
+                playField.append(overlay);
+                //creato div overlay vai su css e mettilo sopra
+                //trasparente cosi non si puo cliccare
             }else{
                 if(!clicked.includes(i)){
                     points++;

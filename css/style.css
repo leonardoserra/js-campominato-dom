@@ -53,6 +53,7 @@ main{
     flex-wrap: wrap;
     background-color: aliceblue;
     cursor:crosshair;
+    position: relative;
 }
 
 
@@ -89,6 +90,16 @@ main{
 
 .square.clicked.bomb{
     background-color: rgb(254, 90, 90);
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(240, 248, 255, 0);
+    z-index: 10;
 }
 
 
