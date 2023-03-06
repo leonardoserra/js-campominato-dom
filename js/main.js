@@ -38,7 +38,6 @@ const playField = document.getElementById('playField');
 const startButton = document.getElementById('button');
 const difficulty = document.getElementById('difficulty');
 const difficultNumber = parseInt(difficulty.value);
-console.log(typeof(difficultNumber));
 
 /*
     per vedere se é una bomba dovro fare un ciclo for con un if che confronterà
@@ -47,21 +46,26 @@ console.log(typeof(difficultNumber));
 */
 
 startButton.addEventListener('click', function(){
+    playField.innerHTML = '';
     let bombs = [];
+    let cells = [];
+    
+    //riempio il field coi quadrati cliccabili
+    for(let i = 1; i <= difficultNumber; i++){
+        cells.push(squareGenerator(i));
+    }
 
-
+    //creo array coi numeri bomba
     for(c = 0;c < 16;c++){
         let bomb = uniqueNumberGen(bombs, 1, difficultNumber);
         bombs.push(bomb);
     }
 
+
+
     console.log(bombs)
 
-    playField.innerHTML = '';
     
-    for(let i = 1; i <= difficultNumber; i++){
-        squareGenerator(i);
-    }
 
 });
 
@@ -96,9 +100,6 @@ function squareGenerator(numberInside){
         console.log(numberInside);
     })
 
-   
-
-
 }
 
 
@@ -124,7 +125,15 @@ function uniqueNumberGen(blacklist, min, max){
     return randomNumber;
 }
 
-
+function bombDropper(fieldArray, bombArray){
+    
+    for(i = 0;i < fieldArray.lenght - 1;i++){
+        if(bombArray.includes(i)){
+        //newSquare.classList.add('bomb');
+        
+        }
+    }
+}
 
     
 
