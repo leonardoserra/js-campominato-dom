@@ -41,20 +41,21 @@ const difficultNumber = parseInt(difficulty.value);
 console.log(typeof(difficultNumber));
 
 /*
-    per vedere se é una bomba dovro fare un if che confronterà ogni volta
-    gli indici dell'array creato da numberInside con gli indici
+    per vedere se é una bomba dovro fare un ciclo for con un if che confronterà
+    ogni volta gli indici dell'array creato da numberInside con gli indici
     dell array bombs e se corrispondono allora quella sara una bomba
 */
+
 startButton.addEventListener('click', function(){
     let bombs = [];
-    
+    uniqueNumberGen(bombs, 1, difficultNumber)
     playField.innerHTML = '';
     
     for(let i = 1; i <= difficultNumber; i++){
         squareGenerator(i);
     }
 
-    bombsNumbersGen(bombs, difficultNumber);
+    randomNumbersGen(bombs, difficultNumber);
     console.log(bombs);
     
 });
@@ -96,16 +97,26 @@ function squareGenerator(numberInside){
 }
 
 
-function bombsNumbersGen(arrayToFill, randomNumberRange){
-    for(c = 0; c < 16; c++){
-        let randomNumber = (Math.floor(Math.random() * randomNumberRange + 1));
-        arrayToFill.push(randomNumber);
-    }
-    return arrayToFill;
+function randomNumbersGen(min, max){
+    // for(c = 0; c < 16; c++){
+        let randomNumber = Math.floor(Math.random() * (max - min) + 1) + min;
+        // arrayToFill.push(randomNumber);
+    // }
+    return randomNumber;
 
 }
 
+function uniqueNumberGen(blacklist, min, max){
+    let validNumber = false;
+    let randomNumber;
 
+        while(!validNumber){
+           randomNumber = randomNumbersGen(min ,max);
+           if(!blacklist.includes(randomNumber)){
+            validNumber = true;
+           }
+        }
+}
 
 
 
