@@ -81,18 +81,22 @@ startButton.addEventListener('click', function(){
         newSquare.addEventListener('click', function(){
             this.classList.toggle('clicked');
             console.log(i);
+            if(bombs.includes(i)){
+                this.classList.toggle('bomb');
+            }
+            
         });
 
         // bombDropper(cells, bombs, newSquare);
 
-        newSquare.addEventListener('click', function(){
-            for(c = 0; c < cells.lenght - 1; c++){
+        // newSquare.addEventListener('click', function(){
+        //     for(c = 0; c < cells.lenght - 1; c++){
             
-                if(bombs.includes(i)){
-                   return this.classList.toggle('bomb');
-                }
-            }   
-        })
+        //         if(bombs.includes(i)){
+        //            return this.classList.toggle('bomb');
+        //         }
+        //     }   
+        // })
 
     }
 
