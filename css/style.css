@@ -52,7 +52,9 @@ main{
     display: flex;
     flex-wrap: wrap;
     background-color: aliceblue;
+    cursor:crosshair;
 }
+
 
 .square{
     border: 2px solid rgb(170, 0, 255);

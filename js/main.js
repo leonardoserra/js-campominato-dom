@@ -86,15 +86,15 @@ startButton.addEventListener('click', function(){
         newSquare.addEventListener('click', function(){
             
             let points = 0;
-            newSquare.classList.add('clicked');
+            this.classList.add('clicked');
             
-            while(points < cells.lenght - bombs.length){
             
+            while(points < (cells.length - bombs.length)){
+                points++;
                 if(bombs.includes(i)){
-                    newSquare.classList.add('bomb');
-                    pointsDom.innerHTML = `Hai perso! Hai totalizzato ${points} punti`
-                }else if(!bombs.includes(i)){
-                    points++;
+                    this.classList.add('bomb');
+                    pointsDom.innerHTML = `Hai perso! Hai totalizzato ${points - 1} punti`
+                }else{
                     pointsDom.innerHTML = `Hai ${points} punti`;
                 }
             
