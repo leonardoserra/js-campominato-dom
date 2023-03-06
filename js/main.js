@@ -38,7 +38,6 @@ const playField = document.getElementById('playField');
 const startButton = document.getElementById('button');
 const difficulty = document.getElementById('difficulty');
 
-let points= 0;
 let clicked = [];
 
 /*
@@ -97,7 +96,7 @@ startButton.addEventListener('click', function(){
             console.log(i);
             if(bombs.includes(i)){
                 this.classList.add('bomb');
-                pointsDom.innerHTML = `Hai perso! Hai totalizzato ${points} punti`;
+                pointsDom.innerHTML = `Hai perso! Hai totalizzato ${clicked.length} punti`;
                 overlay.classList.add('overlay');
                 playField.append(overlay);
                 clicked = [];
@@ -106,11 +105,11 @@ startButton.addEventListener('click', function(){
                     points++;
                     clicked.push(i);
                 }
-                pointsDom.innerHTML = `Punti: ${points}`;
+                pointsDom.innerHTML = `Punti: ${clicked.length}`;
                 console.log(clicked);
             }     
             
-            if(points == cells.length - bombs.length){
+            if(clicked.length == cells.length - bombs.length){
                 pointsDom.innerHTML = `Hai fatto il massimo di punti, HAI VINTO!`;
                 overlay.classList.add('overlay');
                 playField.append(overlay);
