@@ -85,14 +85,14 @@ startButton.addEventListener('click', function(){
         for(let points = 0; points < difficultNumber - bombs.length; points++){
                 newSquare.addEventListener('click', function(){
                     this.classList.add('clicked');
-                
-                if(bombs.includes(i)){
-                    this.classList.add('bomb');
-                    pointsDom.innerHTML = `Hai perso! Hai totalizzato ${points} punti`
-                }else{
-                    console.log(i);
                     pointsDom.innerHTML = `Hai ${points} punti`;
-                }
+                
+                    if(bombs.includes(i)){
+                        this.classList.add('bomb');
+                        pointsDom.innerHTML = `Hai perso! Hai totalizzato ${points} punti`
+                    }else{
+                        console.log(i);
+                    }
 
                 
             });
