@@ -46,6 +46,7 @@ ogni volta gli indici dell'array creato da numberInside con gli indici
 */
 
 startButton.addEventListener('click', function(){
+    points = 0;
     playField.innerHTML = '';
     let bombs = [];
     let cells = [];
@@ -94,8 +95,6 @@ startButton.addEventListener('click', function(){
                 let overlay = document.createElement('div');
                 overlay.classList.add('overlay');
                 playField.append(overlay);
-                //creato div overlay vai su css e mettilo sopra
-                //trasparente cosi non si puo cliccare
             }else{
                 if(!clicked.includes(i)){
                     points++;
