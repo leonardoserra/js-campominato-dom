@@ -55,9 +55,8 @@ startButton.addEventListener('click', function(){
 
     
     //creo array coi numeri bomba
-    for(c = 0;c < 16;c++){
-        let bomb = uniqueNumberGen(bombs, 1, difficultNumber);
-        bombs.push(bomb);
+    for(c = 0;c < 16; c++){
+        bombs.push(uniqueNumberGen(bombs, 1, difficultNumber));
     }
     
     //riempio il field coi quadrati cliccabili
