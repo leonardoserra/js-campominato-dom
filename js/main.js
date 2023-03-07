@@ -52,7 +52,8 @@ startButton.addEventListener('click', function(){
     let bombs = [];
     let cells = [];
     let difficultNumber = parseInt(difficulty.value);
-
+    clicked = [];
+    let gameOver = false;
     
     //creo array coi numeri bomba
     for(c = 0;c < 16; c++){
@@ -90,29 +91,33 @@ startButton.addEventListener('click', function(){
         
         newSquare.addEventListener('click', function(){
 
+        if(!gameOver){
             let overlay = document.createElement('div');
-            this.classList.add('clicked');
-            console.log(i);
-            if(bombs.includes(i)){
-                this.classList.add('bomb');
-                pointsDom.innerHTML = `Hai perso! Hai totalizzato ${clicked.length} punti`;
-                overlay.classList.add('overlay');
-                playField.append(overlay);
-                clicked = [];
-            }else{
-                if(!clicked.includes(i)){
-                    points++;
-                    clicked.push(i);
+                this.classList.add('clicked');
+                console.log(i);
+                if(bombs.includes(i)){
+                    this.classList.add('bomb');
+                    pointsDom.innerHTML = `Hai perso! Hai totalizzato ${clicked.length} punti`;
+                    gameOver = true;
+                    // overlay.classList.add('overlay');
+                    // playField.append(overlay);
+                    
+                }else{
+                    if(!clicked.includes(i)){
+                        points++;
+                        clicked.push(i);
+                    }
+                    pointsDom.innerHTML = `Punti: ${clicked.length}`;
+                    console.log(clicked);
+                }     
+                
+                if(clicked.length == cells.length - bombs.length){
+                    pointsDom.innerHTML = `Hai fatto il massimo di punti, HAI VINTO!`;
+                    overlay.classList.add('overlay');
+                    playField.append(overlay);
+                    
                 }
-                pointsDom.innerHTML = `Punti: ${clicked.length}`;
-                console.log(clicked);
-            }     
-            
-            if(clicked.length == cells.length - bombs.length){
-                pointsDom.innerHTML = `Hai fatto il massimo di punti, HAI VINTO!`;
-                overlay.classList.add('overlay');
-                playField.append(overlay);
-                clicked = [];
+
             }
         });
 
